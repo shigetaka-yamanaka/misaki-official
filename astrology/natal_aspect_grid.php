@@ -42,22 +42,22 @@
   $orange = imagecolorallocate($im, 255, 127, 0);
   $light_blue = imagecolorallocate($im, 239, 255, 255);
 
-  $pl_name[0] = "Sun";
-  $pl_name[1] = "Moon";
-  $pl_name[2] = "Mercury";
-  $pl_name[3] = "Venus";
-  $pl_name[4] = "Mars";
-  $pl_name[5] = "Jupiter";
-  $pl_name[6] = "Saturn";
-  $pl_name[7] = "Uranus";
-  $pl_name[8] = "Neptune";
-  $pl_name[9] = "Pluto";
-  $pl_name[10] = "Chiron";
-  $pl_name[11] = "Lilith";		//add a planet
-  $pl_name[12] = "True Node";
+  $pl_name[0] = "太陽";
+  $pl_name[1] = "月";
+  $pl_name[2] = "水星";
+  $pl_name[3] = "金星";
+  $pl_name[4] = "火星";
+  $pl_name[5] = "木星";
+  $pl_name[6] = "土星";
+  $pl_name[7] = "天王星";
+  $pl_name[8] = "海王星";
+  $pl_name[9] = "冥王星";
+  $pl_name[10] = "カイロン";
+  $pl_name[11] = "リリス";		//add a planet
+  $pl_name[12] = "ドラゴンヘッド";
   $pl_name[13] = "P. of Fortune";
-  $pl_name[14] = "Vertex";
-  $pl_name[15] = "Ascendant";
+  $pl_name[14] = "バーテックス";
+  $pl_name[15] = "アセンダント";
   $pl_name[16] = "Midheaven";
 
   $pl_glyph[0] = 81;
