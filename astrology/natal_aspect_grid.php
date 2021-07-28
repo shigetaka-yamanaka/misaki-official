@@ -22,7 +22,7 @@
   header("Content-type: image/png");
 
 // create the blank image
-  $overall_size = 450;		//add a planet
+  $overall_size = 550;		//add a planet
   $extra_width = 255;		//in order to make total width = 680
   $margins = 20;			//left and right margins on the background graphic
 
