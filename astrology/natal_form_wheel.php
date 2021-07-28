@@ -334,7 +334,7 @@
       echo "<center>";
 
       $restored_name = stripslashes($name);
-      echo "<FONT color='#ff0000' SIZE='5' FACE='Arial'><b> $restored_name </b></font><br /><br />";
+      echo "<FONT color='#ff0000' SIZE='5' FACE='Arial'><b>氏名 $restored_name </b></font><br /><br />";
 
       $secs = "0";
       if ($timezone < 0)
@@ -349,71 +349,6 @@
       echo '<font size="2"><b>Born ' . strftime("%A, %B %d, %Y<br>%X (time zone = GMT $tz hours)</b></font><br />\n", mktime($hour, $minute, $secs, $month, $day, $year));
       echo "<font size = '-1'><b>" . $long_deg . $ew_txt . $long_min . ", " . $lat_deg . $ns_txt . $lat_min . "</b></font><br /><br />";
 ?>
-
-<!--
-      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        <select name="h_sys" size="1">
-          <?php
-          echo "<option value='p' ";
-          if ($h_sys == "p"){ echo " selected"; }
-          echo "> Placidus </option>";
-
-          echo "<option value='k' ";
-          if ($h_sys == "k"){ echo " selected"; }
-          echo "> Koch </option>";
-
-          echo "<option value='r' ";
-          if ($h_sys == "r"){ echo " selected"; }
-          echo "> Regiomontanus </option>";
-
-          echo "<option value='c' ";
-          if ($h_sys == "c"){ echo " selected"; }
-          echo "> Campanus </option>";
-
-          echo "<option value='b' ";
-          if ($h_sys == "b"){ echo " selected"; }
-          echo "> Alcabitus </option>";
-
-          echo "<option value='o' ";
-          if ($h_sys == "o"){ echo " selected"; }
-          echo "> Porphyrius </option>";
-
-          echo "<option value='m' ";
-          if ($h_sys == "m"){ echo " selected"; }
-          echo "> Morinus </option>";
-
-          echo "<option value='a' ";
-          if ($h_sys == "a"){ echo " selected"; }
-          echo "> Equal house - Asc </option>";
-
-          echo "<option value='t' ";
-          if ($h_sys == "t"){ echo " selected"; }
-          echo "> Topocentric </option>";
-
-          echo "<option value='v' ";
-          if ($h_sys == "v"){ echo " selected"; }
-          echo "> Vehlow </option>";
-          ?>
-        </select>
-
-        <input type="hidden" name="name" value="<?php echo $_POST['name']; ?>">
-        <input type="hidden" name="month" value="<?php echo $_POST['month']; ?>">
-        <input type="hidden" name="day" value="<?php echo $_POST['day']; ?>">
-        <input type="hidden" name="year" value="<?php echo $_POST['year']; ?>">
-        <input type="hidden" name="hour" value="<?php echo $_POST['hour']; ?>">
-        <input type="hidden" name="minute" value="<?php echo $_POST['minute']; ?>">
-        <input type="hidden" name="timezone" value="<?php echo $_POST['timezone']; ?>">
-        <input type="hidden" name="long_deg" value="<?php echo $_POST['long_deg']; ?>">
-        <input type="hidden" name="long_min" value="<?php echo $_POST['long_min']; ?>">
-        <input type="hidden" name="ew" value="<?php echo $_POST['ew']; ?>">
-        <input type="hidden" name="lat_deg" value="<?php echo $_POST['lat_deg']; ?>">
-        <input type="hidden" name="lat_min" value="<?php echo $_POST['lat_min']; ?>">
-        <input type="hidden" name="ns" value="<?php echo $_POST['ns']; ?>">
-
-        <input type="hidden" name="h_sys_submitted" value="TRUE">
-        <INPUT type="submit" name="submit" value="Go" align="middle" style="background-color:#66ff66;color:#000000;font-size:16px;font-weight:bold">
-      </form>
--->
 
 
 <?php
@@ -750,7 +685,7 @@
 
         <font color="#0000ff">
         (please give time of birth in 24 hour format. If your birth time is unknown, please enter 12:00)<br>
-        (if you were born EXACTLY at 12:00, then please enter 11:59 or 12:01 � 12:00 is reserved for unknown birth times only)
+        (if you were born EXACTLY at 12:00, then please enter 11:59 or 12:01  12:00 is reserved for unknown birth times only)
         <br><br>
         </font>
       </TD>
