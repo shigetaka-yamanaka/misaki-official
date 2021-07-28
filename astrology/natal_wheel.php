@@ -26,12 +26,12 @@
 
 // specify the colors
   $white = imagecolorallocate($im, 255, 255, 255);
-  $red = imagecolorallocate($im, 255, 0, 0);
-  $blue = imagecolorallocate($im, 0, 0, 255);
-  $magenta = imagecolorallocate($im, 255, 0, 255);
-  $yellow = imagecolorallocate($im, 255, 255, 0);
-  $cyan = imagecolorallocate($im, 0, 255, 255);
-  $green = imagecolorallocate($im, 0, 224, 0);
+  $red = imagecolorallocate($im, 255, 51, 51);
+  $blue = imagecolorallocate($im, 51, 51, 255);
+  $magenta = imagecolorallocate($im, 255, 51, 255);
+  $yellow = imagecolorallocate($im, 255, 255, 51);
+  $cyan = imagecolorallocate($im, 51, 255, 255);
+  $green = imagecolorallocate($im, 51, 224, 51);
   $grey = imagecolorallocate($im, 127, 127, 127);
   $black = imagecolorallocate($im, 0, 0, 0);
   $lavender = imagecolorallocate($im, 160, 0, 255);
@@ -688,7 +688,7 @@ Function display_house_cusp_number($num, $angle, $radii, &$xy)
     $ypos0 = -$half_char_height;
     $y_adj = sin(deg2rad($angle)) * $half_char_height;
   }
-  elseif ($num == 10)
+/*  elseif ($num == 10)
   {
     $xpos0 = -$char_width;
     $x_adj = -cos(deg2rad($angle)) * $char_width;
@@ -705,7 +705,7 @@ Function display_house_cusp_number($num, $angle, $radii, &$xy)
   {
     $x_adj = -cos(deg2rad($angle)) * $char_width;
     $y_adj = sin(deg2rad($angle)) * $half_char_height;
-  }
+  }*/
 
   $xy[0] = $xpos0 + $x_adj - ($radii * cos(deg2rad($angle)));
   $xy[1] = $ypos0 + $y_adj + ($radii * sin(deg2rad($angle)));;
