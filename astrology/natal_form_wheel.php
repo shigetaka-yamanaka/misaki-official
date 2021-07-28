@@ -412,6 +412,7 @@
       {
         echo "<td><font color='#0000ff'><b> House<br>position </b></font></td>";
       }
+			echo "<td><font color='#0000ff'><b>The Sabian Symbol </b></font></td>";
       echo '</tr>';
 
       if ($ubt1 == 1)
@@ -444,6 +445,7 @@
             echo "<td>&nbsp;&nbsp;&nbsp;" . $hse . "</td>";
           }
         }
+				echo '<td>SABIANß</td>';
         echo '</tr>';
       }
 
