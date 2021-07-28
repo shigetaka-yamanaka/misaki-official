@@ -144,13 +144,13 @@
 // draw in the planet glyphs
   for ($i = 0; $i <= $last_planet_num; $i++)
   {
-    drawboldtext($im, 18, 0, $margins + $i * $cell_width, $cell_height * ($i + 1), $black, 'OradanoGSRR.ttf', chr($pl_glyph[$i]), 0);
+    drawboldtext($im, 18, 0, $margins + $i * $cell_width, $cell_height * ($i + 1), $black, 'HamburgSymbols.ttf', chr($pl_glyph[$i]), 0);
 
     // display planet data in the right-hand table
-    drawboldtext($im, 16, 0, $margins + $left_margin_planet_table, $cell_height * ($i + 1), $black, 'OradanoGSRR.ttf', chr($pl_glyph[$i]), 0);
+    drawboldtext($im, 16, 0, $margins + $left_margin_planet_table, $cell_height * ($i + 1), $black, 'HamburgSymbols.ttf', chr($pl_glyph[$i]), 0);
     imagettftext($im, 10, 0, $margins + $left_margin_planet_table + $cell_width * 2, $cell_height * ($i + 1) - 3, $blue, 'OradanoGSRR.ttf', $pl_name[$i]);
     $sign_num = floor($longitude[$i] / 30) + 1;
-    drawboldtext($im, 14, 0, $margins + $left_margin_planet_table + $cell_width * 5, $cell_height * ($i + 1), $black, 'OradanoGSRR.ttf', chr($sign_glyph[$sign_num]), 0);
+    drawboldtext($im, 14, 0, $margins + $left_margin_planet_table + $cell_width * 5, $cell_height * ($i + 1), $black, 'HamburgSymbols.ttf', chr($sign_glyph[$sign_num]), 0);
     imagettftext($im, 10, 0, $margins + $left_margin_planet_table + $cell_width * 6, $cell_height * ($i + 1) - 3, $blue, 'OradanoGSRR.ttf', Convert_Longitude($longitude[$i]) . " " . $rx1[$i]);
   }
 
