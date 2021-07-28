@@ -22,7 +22,7 @@
   header("Content-type: image/png");
 
 // create the blank image
-  $overall_size = 550;		//add a planet
+  $overall_size = 450;		//add a planet
   $extra_width = 255;		//in order to make total width = 680
   $margins = 20;			//left and right margins on the background graphic
 
@@ -30,12 +30,12 @@
 
 // specify the colors
   $white = imagecolorallocate($im, 255, 255, 255);
-  $red = imagecolorallocate($im, 255, 0, 0);
-  $blue = imagecolorallocate($im, 0, 0, 255);
-  $magenta = imagecolorallocate($im, 255, 0, 255);
-  $yellow = imagecolorallocate($im, 255, 255, 0);
-  $cyan = imagecolorallocate($im, 0, 255, 255);
-  $green = imagecolorallocate($im, 0, 224, 0);
+  $red = imagecolorallocate($im, 255, 51, 51);
+  $blue = imagecolorallocate($im, 51, 51, 255);
+  $magenta = imagecolorallocate($im, 255, 51, 255);
+  $yellow = imagecolorallocate($im, 255, 255, 51);
+  $cyan = imagecolorallocate($im, 51, 255, 255);
+  $green = imagecolorallocate($im, 51, 224, 51);
   $grey = imagecolorallocate($im, 127, 127, 127);
   $black = imagecolorallocate($im, 0, 0, 0);
   $lavender = imagecolorallocate($im, 160, 0, 255);
@@ -119,7 +119,7 @@
   imagefilledrectangle($im, 0, 0, $overall_size + $extra_width, $overall_size, $white);		//705 x 450 - add a planet
 
 // MUST BE HERE - I DO NOT KNOW WHY - MAYBE TO PRIME THE PUMP
-  imagettftext($im, 10, 0, 0, 0, $black, 'arial.ttf', " ");
+  imagettftext($im, 10, 0, 0, 0, $black, 'OradanoGSRR.ttf', " ");
 
 // ------------------------------------------
 
