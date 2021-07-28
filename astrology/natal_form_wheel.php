@@ -334,7 +334,7 @@
       echo "<center>";
 
       $restored_name = stripslashes($name);
-      echo "<FONT color='#ff0000' SIZE='5' FACE='Arial'><b>Name = $restored_name </b></font><br /><br />";
+      echo "<FONT color='#ff0000' SIZE='5' FACE='Arial'><b> $restored_name </b></font><br /><br />";
 
       $secs = "0";
       if ($timezone < 0)
@@ -349,6 +349,8 @@
       echo '<font size="2"><b>Born ' . strftime("%A, %B %d, %Y<br>%X (time zone = GMT $tz hours)</b></font><br />\n", mktime($hour, $minute, $secs, $month, $day, $year));
       echo "<font size = '-1'><b>" . $long_deg . $ew_txt . $long_min . ", " . $lat_deg . $ns_txt . $lat_min . "</b></font><br /><br />";
 ?>
+
+<!--
       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <select name="h_sys" size="1">
           <?php
@@ -411,6 +413,9 @@
         <input type="hidden" name="h_sys_submitted" value="TRUE">
         <INPUT type="submit" name="submit" value="Go" align="middle" style="background-color:#66ff66;color:#000000;font-size:16px;font-weight:bold">
       </form>
+-->
+
+
 <?php
       echo "</center>";
 
