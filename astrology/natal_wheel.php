@@ -55,7 +55,8 @@
   $radius = $diameter / 2;				// radius of circle drawn
   $center_pt = $size_of_rect / 2;		// center of circle
 
-  $last_planet_num = 14;				//add a planet
+  //$last_planet_num = 14;				//add a planet
+  $last_planet_num = 10;				//add a planet
   $num_planets = $last_planet_num + 1;
   $max_num_pl_in_each_house = 6;
   $deg_in_each_house = 30;
@@ -688,7 +689,7 @@ Function display_house_cusp_number($num, $angle, $radii, &$xy)
     $ypos0 = -$half_char_height;
     $y_adj = sin(deg2rad($angle)) * $half_char_height;
   }
-/*  elseif ($num == 10)
+  elseif ($num == 10)
   {
     $xpos0 = -$char_width;
     $x_adj = -cos(deg2rad($angle)) * $char_width;
@@ -705,7 +706,7 @@ Function display_house_cusp_number($num, $angle, $radii, &$xy)
   {
     $x_adj = -cos(deg2rad($angle)) * $char_width;
     $y_adj = sin(deg2rad($angle)) * $half_char_height;
-  }*/
+  }
 
   $xy[0] = $xpos0 + $x_adj - ($radii * cos(deg2rad($angle)));
   $xy[1] = $ypos0 + $y_adj + ($radii * sin(deg2rad($angle)));;
