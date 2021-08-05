@@ -632,14 +632,15 @@
 ?>
 
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" target="_blank" style="margin: 0px 20px;">
-  <fieldset><legend><font size=5><b>Data entry for Natal Chart</b></font></legend>
+  <fieldset style="background-color:#F7F6F5">
+		<legend><font size=5><b>出生データの入力</b></font></legend>
 
-  &nbsp;&nbsp;<font color="#ff0000"><b>All fields are required.</b></font><br>
+  &nbsp;&nbsp;<font color="#ff0000"><b>全て入力必須</b></font><br>
 
   <table style="font-size:12px;">
     <TR>
       <TD>
-        <P align="right">Name:</P>
+        <P align="right">名前:</P>
       </TD>
 
       <TD>
@@ -649,7 +650,7 @@
 
     <TR>
       <TD>
-        <P align="right">Birth date:</P>
+        <P align="right">誕生日:</P>
       </TD>
 
       <TD>
@@ -671,13 +672,13 @@
         <b>,</b>&nbsp;
         <INPUT size="4" maxlength="4" name="year" value="<?php echo $year; ?>">
          <font color="#0000ff">
-        (only years from 1900 through 2099 are valid)
+        (1900年から2099年の間のみ対応しています）
         </font>
      </TD>
     </TR>
 
     <TR>
-      <td valign="top"><P align="right">Birth time:</P></td>
+      <td valign="top"><P align="right">出生時刻:</P></td>
       <TD>
         <INPUT maxlength="2" size="2" name="hour" value="<?php echo $hour; ?>">
         <b>:</b>
@@ -686,8 +687,7 @@
         <br>
 
         <font color="#0000ff">
-        (please give time of birth in 24 hour format. If your birth time is unknown, please enter 12:00)<br>
-        (if you were born EXACTLY at 12:00, then please enter 11:59 or 12:01  12:00 is reserved for unknown birth times only)
+        (24時間表記で入力。不明の場合は不明チェックボックスを設ける。12:00と入れると不明として扱われるらしいので、12:00の場合は12:01に変換する)
         <br><br>
         </font>
       </TD>
@@ -709,11 +709,14 @@
     </TR>
 
     <TR>
-      <td valign="top"><P align="right">Time zone:</P></td>
+      <td valign="top"><P align="right">タイムゾーン:</P></td>
 
       <TD>
         <select name="timezone" size="1">
           <?php
+					
+					$timezone == "9";
+					
           echo "<option value='' ";
           if ($timezone == ""){ echo " selected"; }
           echo "> Select Time Zone </option>";
@@ -883,7 +886,7 @@
     </TR>
 
     <TR>
-      <td valign="top"><P align="right">Longitude:</P></td>
+      <td valign="top"><P align="right">緯度:</P></td>
       <TD>
         <INPUT maxlength="3" size="3" name="long_deg" value="<?php echo $long_deg; ?>">
         <select name="ew">
@@ -915,7 +918,7 @@
     </TR>
 
     <TR>
-      <td valign="top"><P align="right">Latitude:</P></td>
+      <td valign="top"><P align="right">経度:</P></td>
 
       <TD>
         <INPUT maxlength="2" size="3" name="lat_deg" value="<?php echo $lat_deg; ?>">
