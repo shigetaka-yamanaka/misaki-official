@@ -190,7 +190,7 @@ $host="mysql7053.xserver.jp";
 $username="cheers1111_astro";
 $passwd="astrology";
 $dbname="cheers1111_astrology";
-mysqli_connect($host,$username,$passwd,$dbname,$port,$socket)
+mysqli_connect($host,$username,$passwd,$dbname,$port,$socket);
 
 	// 接続状況をチェックします
 	if (mysqli_connect_errno()) {
