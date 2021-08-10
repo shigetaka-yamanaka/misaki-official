@@ -632,7 +632,7 @@
 ?>
 
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" target="_blank" style="margin: 0px 20px;">
-  <fieldset style="background-color:#F7F6F5">
+  <fieldset style="background-color:#F5F7F6">
 		<legend><font size=5><b>出生データの入力</b></font></legend>
 
   &nbsp;&nbsp;<font color="#ff0000"><b>全て入力必須</b></font><br>
@@ -683,8 +683,8 @@
         <INPUT maxlength="2" size="2" name="hour" value="<?php echo $hour; ?>">
         <b>:</b>
         <INPUT maxlength="2" size="2" name="minute" value="<?php echo $minute; ?>">
-
         <br>
+				不明<b>:</b><INPUT type="checkbox" name="birthtimeunknown">
 
         <font color="#0000ff">
         (24時間表記で入力。不明の場合は不明チェックボックスを設ける。12:00と入れると不明として扱われるらしいので、12:00の場合は12:01に変換する)
@@ -693,6 +693,7 @@
       </TD>
     </TR>
 
+<!--
     <TR>
       <td valign="top">
         <P align="right"><font color="#ff0000">
@@ -707,7 +708,7 @@
         <b>&nbsp;&nbsp;West longitudes are MINUS time zones.&nbsp;&nbsp;East longitudes are PLUS time zones.</b>
       </td>
     </TR>
-
+-->
     <TR>
       <td valign="top"><P align="right">タイムゾーン:</P></td>
 
@@ -954,9 +955,9 @@
 
   <br>
   <center>
-  <font color="#ff0000"><b>Most people mess up the time zone selection. Please make sure your selection is correct.</b></font><br><br>
+<!--  <font color="#ff0000"><b>Most people mess up the time zone selection. Please make sure your selection is correct.</b></font><br><br>-->
   <input type="hidden" name="submitted" value="TRUE">
-  <INPUT type="submit" name="submit" value="Submit data (AFTER DOUBLE-CHECKING IT FOR ERRORS)" align="middle" style="background-color:#66ff66;color:#000000;font-size:16px;font-weight:bold">
+  <INPUT type="submit" name="submit" value="続ける" align="middle" style="background-color:#187DB1;color:#FFF;font-size:16px;font-weight:bold">
   </center>
 
   <br>
