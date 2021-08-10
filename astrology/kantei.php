@@ -445,7 +445,7 @@
             echo "<td>&nbsp;&nbsp;&nbsp;" . $hse . "</td>";
           }
         }
-				echo '<td>SABIANß</td>';
+				echo '<td>SABIAN</td>';
         echo '</tr>';
       }
 
