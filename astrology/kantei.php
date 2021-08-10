@@ -454,7 +454,7 @@
             echo "<td>&nbsp;&nbsp;&nbsp;" . $hse . "</td>";
           }
         }
-				echo '<td>SABIAN</td>';
+				echo '<td>SABIAN'.Convert_Longitude($longitude1[$i]) .'</td>';
         echo '</tr>';
       }
 
