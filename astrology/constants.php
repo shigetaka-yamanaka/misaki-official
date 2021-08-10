@@ -186,16 +186,5 @@ define("CLR_1ST_H", "#840da9");
 define("CLR_2ND_H", "#c0004d");
 define("CLR_3RD_H", "#808080");
 
-$host="mysql7053.xserver.jp";
-$username="cheers1111_astro";
-$passwd="astrology";
-$dbname="cheers1111_astrology";
-mysqli_connect($host,$username,$passwd,$dbname,$port,$socket);
 
-	// 接続状況をチェックします
-	if (mysqli_connect_errno()) {
-	    die("データベースに接続できません:" . mysqli_connect_error() . "\n");
-	} else {
-	    echo "データベースの接続に成功しました。\n";
-	}
 ?>

@@ -5,6 +5,15 @@
   // check if the form has been submitted
   if (isset($_POST['submitted']) Or isset($_POST['h_sys_submitted']))
   {
+		
+
+		$host="mysql7053.xserver.jp";
+		$username="cheers1111_astro";
+		$passwd="astrology";
+		$dbname="cheers1111_astrology";
+		mysqli_connect($host,$username,$passwd,$dbname,$port,$socket);		
+		
+		
     // get all variables from form
     $h_sys = safeEscapeString($_POST["h_sys"]);
     $name = safeEscapeString($_POST["name"]);
