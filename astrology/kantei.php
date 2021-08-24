@@ -1,17 +1,25 @@
 <?php
+
+
+
   $months = array (0 => 'Choose month', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
   $my_error = "";
+
+  
+  //MySQL
+  $host="mysql7053.xserver.jp";
+  $username="cheers1111_astro";
+  $passwd="astrology";
+  $dbname="cheers1111_astrology";
+  $mysqli = mysqli_connect($host,$username,$passwd,$dbname,$port,$socket);		
+
+
 
   // check if the form has been submitted
   if (isset($_POST['submitted']) Or isset($_POST['h_sys_submitted']))
   {
 		
 
-		$host="mysql7053.xserver.jp";
-		$username="cheers1111_astro";
-		$passwd="astrology";
-		$dbname="cheers1111_astrology";
-		mysqli_connect($host,$username,$passwd,$dbname,$port,$socket);		
 		
 		
     // get all variables from form
@@ -56,7 +64,6 @@
     setcookie ('ns', $ns, time() + 60 * 60 * 24 * 30, '/', '', 0);
 
     include ('header_natal.html');				//here because of setting cookies above
-
     include("validation_class.php");
 
     //error check
@@ -399,11 +406,34 @@
       $ser_L2 = serialize($longitude1);
       $ser_hc1 = serialize($hc1);
 
+      
       echo "<center>";
-      //echo "<img border='0' src='chartwheel_natal_line.php?rx1=$rx1&rx2=$rx2&p1=$ser_L1&p2=$ser_L2&hc1=$ser_hc1&ubt1=$ubt1&ubt2=$ubt2' width='730' height='400'>";
     echo "<img border='0' src='natal_wheel.php?rx1=$rx1&rx2=$rx2&p1=$ser_L1&p2=$ser_L2&hc1=$ser_hc1&ubt1=$ubt1&ubt2=$ubt2' width='640' height='640'>";
     echo "<br><br>";
     echo "<img border='0' src='natal_aspect_grid.php?rx1=$rx1&rx2=$rx2&p1=$ser_L1&p2=$ser_L2&hc1=$ser_hc1&ubt1=$ubt1&ubt2=$ubt2' width='705' height='450'>";
+    echo "<br><br>";
+    echo "<img border='0' src='natal_katsudou.php?rx1=$rx1&rx2=$rx2&p1=$ser_L1&p2=$ser_L2&hc1=$ser_hc1&ubt1=$ubt1&ubt2=$ubt2'>";
+      echo "</center>";
+      echo "<br>";
+
+
+
+
+    //活動宮
+
+      echo '<style>.bg{background-color:#FFFFEF}</style>';
+      echo '<center><table width="40%" cellpadding="0" cellspacing="0" border="0">',"\n";
+      echo '<tr>';
+      echo '<td></td><td align="center">活</td><td align="center">不</td><td align="center">柔</td>';
+      echo '</tr><tr>';
+      echo '<td align="center">火</td><td class="bg border"></td><td class="bg border"></td><td class="bg border"></td>';
+      echo '</tr><tr>';
+      echo '<td align="center">風</td><td class="bg border"></td><td class="bg border"></td><td class="bg border"></td>';
+      echo '</tr><tr>';
+      echo '<td align="center">地</td><td></td><td></td><td></td>';
+      echo '</tr><tr>';
+      echo '<td align="center">水</td><td></td><td></td><td></td></tr>';
+      echo '</table>';
       echo "</center>";
       echo "<br>";
 
@@ -454,7 +484,7 @@
             echo "<td>&nbsp;&nbsp;&nbsp;" . $hse . "</td>";
           }
         }
-				echo '<td>SABIAN'.Convert_Longitude($longitude1[$i]) .'</td>';
+	echo '<td>'.Convert_Longitude2($longitude1[$i]) .'</td>';
         echo '</tr>';
       }
 
@@ -1009,12 +1039,12 @@ Function Convert_Longitude($longitude)
 
   if ($deg < 10)
   {
-    $deg = "0" . $deg;
+    //$deg = "0" . $deg;
   }
 
   if ($min < 10)
   {
-    $min = "0" . $min;
+    //$min = "0" . $min;
   }
 
   if ($full_sec < 10)
@@ -1024,6 +1054,24 @@ Function Convert_Longitude($longitude)
 
   return $deg . " " . $signs[$sign_num] . " " . $min . "' " . $full_sec . chr(34);
 }
+
+
+Function Convert_Longitude2($longitude)
+{
+  global $mysqli;
+  //$signs = array (0 => 'Ari', 'Tau', 'Gem', 'Can', 'Leo', 'Vir', 'Lib', 'Sco', 'Sag', 'Cap', 'Aqu', 'Pis');
+
+  $sign_num = floor($longitude / 30);
+  $pos_in_sign = $longitude - ($sign_num * 30);
+  $deg = floor($pos_in_sign);
+
+  $sql = 'SELECT * FROM ja360 where sign_id='.(int)($sign_num+1).' and deg='.(int)($deg+1);
+  $res = $mysqli->query($sql);
+  $dat = mysqli_fetch_row($res);
+  //return $deg+1 . " " . ($sign_num+1);
+  return $dat[3];
+}
+
 
 
 Function mid($midstring, $midstart, $midlength)
