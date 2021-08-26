@@ -7,15 +7,82 @@
 <STYLE type='text/css'>
 td
 {
+	/*
   FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Verdana, Arial, sans-serif; TEXT-DECORATION: none
+*/
 }
 
 .bg{
-  background-color:#FFFFEF;
+/*  background-color:#FFFFEF;*/
 }
 .border{
-  border:1px solid #000;
+/*  border:1px solid #000;*/
 }
+
+table {
+  display: block;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid #DDD;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: #333;
+  font-size: 12px;
+}
+
+.scroll-table table {
+  display: block;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+table tbody {
+  width: 100%;
+  display: table;
+}
+
+table th {
+  background-color: #F2F2F2;
+  display: table-cell;
+  vertical-align: inherit;
+	color:#009AD1;
+}
+
+table th, table td {
+  border: 1px solid #DDD;
+  padding: 10px 15px;
+  text-align: left;
+}
+
+.scroll-table td {
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-width: 360px;
+  min-width: 100px;
+}
+
+.contents p, .contents li, .contents th, .contents td, .contents dl, .contents dt, .contents dd {
+  line-height: 1.7;
+}
+
+@media only screen and (max-width: 960px)
+p, li, dt, dd, th, td {
+  font-size: 15px;
+  font-size: 1.5rem;
+  line-height: 1.65;
+  letter-spacing: 0.05em;
+}
+
+a, a:link, a:hover, a:focus {
+  color: #009AD1;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+}
+
+
 
 </STYLE>
 </HEAD>

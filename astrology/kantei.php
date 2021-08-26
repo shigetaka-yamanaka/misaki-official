@@ -1,8 +1,6 @@
 <?php
 
-
-
-  $months = array (0 => 'Choose month', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+  $months = array (0 => 'Choose month', '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月');
   $my_error = "";
 
   
