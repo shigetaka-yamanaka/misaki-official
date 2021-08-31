@@ -667,9 +667,10 @@
     $ns = $_COOKIE["ns"];
   }
 
-
-  echo "<img src='kantei/p1.png'>";
-  echo "<img src='kantei/p2.png'>";
+  echo "<center>";
+  echo "<img src='kantei/p1.png' width='640'><br />";
+  echo "<img src='kantei/p2.png' width='640'>";
+  echo "</center>";
 
 ?>
 
