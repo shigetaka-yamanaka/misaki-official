@@ -409,8 +409,8 @@
     echo "<img border='0' src='natal_wheel.php?rx1=$rx1&rx2=$rx2&p1=$ser_L1&p2=$ser_L2&hc1=$ser_hc1&ubt1=$ubt1&ubt2=$ubt2' width='640' height='640'>";
     echo "<br><br>";
     echo "<img border='0' src='natal_aspect_grid.php?rx1=$rx1&rx2=$rx2&p1=$ser_L1&p2=$ser_L2&hc1=$ser_hc1&ubt1=$ubt1&ubt2=$ubt2' width='705' height='450'>";
-    echo "<br><br>";
-    echo "<img border='0' src='natal_katsudou.php?rx1=$rx1&rx2=$rx2&p1=$ser_L1&p2=$ser_L2&hc1=$ser_hc1&ubt1=$ubt1&ubt2=$ubt2'>";
+    //echo "<br><br>";
+    //echo "<img border='0' src='natal_katsudou.php?rx1=$rx1&rx2=$rx2&p1=$ser_L1&p2=$ser_L2&hc1=$ser_hc1&ubt1=$ubt1&ubt2=$ubt2'>";
       echo "</center>";
       echo "<br>";
 
@@ -419,38 +419,6 @@
 
     //活動宮
 
-      echo '<style>.bg{background-color:#FFFFEF}</style>';
-      echo '<center><table width="40%" cellpadding="0" cellspacing="0" border="0">',"\n";
-      echo '<tr>';
-      echo '<td></td><td align="center">活</td><td align="center">不</td><td align="center">柔</td>';
-      echo '</tr><tr>';
-      echo '<td align="center">火</td><td class="bg border"></td><td class="bg border"></td><td class="bg border"></td>';
-      echo '</tr><tr>';
-      echo '<td align="center">風</td><td class="bg border"></td><td class="bg border"></td><td class="bg border"></td>';
-      echo '</tr><tr>';
-      echo '<td align="center">地</td><td></td><td></td><td></td>';
-      echo '</tr><tr>';
-      echo '<td align="center">水</td><td></td><td></td><td></td></tr>';
-      echo '</table>';
-      echo "</center>";
-      echo "<br>";
-
-//display natal data
-      echo '<center><table width="40%" cellpadding="0" cellspacing="0" border="0">',"\n";
-
-      echo '<tr>';
-      echo "<td><font color='#0000ff'><b> Planet </b></font></td>";
-      echo "<td><font color='#0000ff'><b> Longitude </b></font></td>";
-      if ($ubt1 == 1)
-      {
-        echo "<td>&nbsp;</td>";
-      }
-      else
-      {
-        echo "<td><font color='#0000ff'><b> House<br>position </b></font></td>";
-      }
-			echo "<td><font color='#0000ff'><b>The Sabian Symbol </b></font></td>";
-      echo '</tr>';
 
       if ($ubt1 == 1)
       {
@@ -463,9 +431,49 @@
 
       for ($i = 0; $i <= $a1; $i++)
       {
+        $sign_num = floor($longitude1[$i] / 30);
+
+	$katsu[$sign_num].=$pl_name[$i]."/";
+      }
+
+      echo '<center><table cellpadding="0" cellspacing="0" border="0">',"\n";
+      echo '<tr>';
+      echo '<th></th><th align="center">活</th><th align="center">不</th><th align="center">柔</th>';
+      echo '</tr><tr>';
+      echo '<th align="center">火</th><td>'.$katsu[0].'</td><td>'.$katsu[4].'</td><td>'.$katsu[8].'</td>';
+      echo '</tr><tr>';
+      echo '<th align="center">風</th><td>'.$katsu[6].'</td><td>'.$katsu[10].'</td><td>'.$katsu[2].'</td>';
+      echo '</tr><tr>';
+      echo '<th align="center">地</th><td>'.$katsu[9].'</td><td>'.$katsu[1].'</td><td>'.$katsu[5].'</td>';
+      echo '</tr><tr>';
+      echo '<th align="center">水</th><td>'.$katsu[3].'</td><td>'.$katsu[7].'</td><td>'.$katsu[11].'</td>';
+      echo '</table>';
+      echo "</center>";
+      echo "<br>";
+
+//display natal data
+      echo '<center><table cellpadding="0" cellspacing="0" border="0">',"\n";
+
+      echo '<tr>';
+      echo "<th>Planet</th>";
+      echo "<th>Longitude</th>";
+      if ($ubt1 == 1)
+      {
+        echo "<th>&nbsp;</th>";
+      }
+      else
+      {
+        echo "<th>House<br>position</th>";
+      }
+			echo "<th>The Sabian Symbol</th>";
+      echo '</tr>';
+
+
+      for ($i = 0; $i <= $a1; $i++)
+      {
         echo '<tr>';
-        echo "<td>" . $pl_name[$i] . "</td>";
-        echo "<td><font face='Courier New'>" . Convert_Longitude($longitude1[$i]) . " " . Mid($rx1, $i + 1, 1) . "</font></td>";
+        echo "<th>" . $pl_name[$i] . "</th>";
+        echo "<td>" . Convert_Longitude($longitude1[$i]) . " " . Mid($rx1, $i + 1, 1) . "</td>";
         if ($ubt1 == 1)
         {
           echo "<td>&nbsp;</td>";
@@ -486,19 +494,13 @@
         echo '</tr>';
       }
 
-      echo '<tr>';
-      echo "<td> &nbsp </td>";
-      echo "<td> &nbsp </td>";
-      echo "<td> &nbsp </td>";
-      echo "<td> &nbsp </td>";
-      echo '</tr>';
+      echo '</table>';
 
       if ($ubt1 == 0)
       {
-        echo '<tr>';
-        echo "<td><font color='#0000ff'><b> House </b></font></td>";
-        echo "<td><font color='#0000ff'><b> Longitude </b></font></td>";
-        echo "<td> &nbsp </td>";
+        echo '<table><tr>';
+        echo "<th>House</th>";
+        echo "<th>Longitude</th>";
         echo '</tr>';
 
         for ($i = LAST_PLANET + 1; $i <= LAST_PLANET + 12; $i++)
@@ -516,8 +518,7 @@
           {
             echo "<td>House " . ($i - LAST_PLANET) . "</td>";
           }
-          echo "<td><font face='Courier New'>" . Convert_Longitude($longitude1[$i]) . "</font></td>";
-          echo "<td> &nbsp </td>";
+          echo "<td>" . Convert_Longitude($longitude1[$i]) . "</td>";
           echo '</tr>';
         }
       }
@@ -527,13 +528,13 @@
 
 
       // display natal data - aspect table
-      echo '<center><table width="40%" cellpadding="0" cellspacing="0" border="0">',"\n";
+      echo '<center><table>',"\n";
 
       echo '<tr>';
-      echo "<td><font color='#0000ff'><b> Planet </b></font></td>";
-      echo "<td><font color='#0000ff'><b> Aspect </b></font></td>";
-      echo "<td><font color='#0000ff'><b> Planet </b></font></td>";
-      echo "<td><font color='#0000ff'><b> Orb </b></font></td>";
+      echo "<th>Planet</th>";
+      echo "<th>Aspect</th>";
+      echo "<th>Planet</th>";
+      echo "<th>Orb</th>";
       echo '</tr>';
 
       // include Ascendant and MC
@@ -1069,6 +1070,7 @@ Function Convert_Longitude2($longitude)
   //return $deg+1 . " " . ($sign_num+1);
   return $dat[3];
 }
+
 
 
 
