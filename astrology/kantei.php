@@ -667,6 +667,10 @@
     $ns = $_COOKIE["ns"];
   }
 
+
+  echo "<img src='kantei/p1.png'>";
+  echo "<img src='kantei/p2.png'>";
+
 ?>
 
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" target="_blank" style="margin: 0px 20px;">
