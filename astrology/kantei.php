@@ -668,10 +668,27 @@
   }
 
   echo "<center>";
-  echo "<img src='kantei/p1.png' width='640'><br />";
-  echo "<img src='kantei/p2.png' width='640'>";
-  echo "</center>";
+  echo "<img src='kantei/p1.png' width='640'><br /><br />";
+  echo "<img src='kantei/p2.png' width='640'><br /><br />";
+  echo "<img src='kantei/p3.png' width='640'><br /><br />";
 
+  echo "<table width='640'>";
+  echo "<tr><td>";
+  echo "<img border='0' src='natal_wheel.php?rx1=$rx1&rx2=$rx2&p1=$ser_L1&p2=$ser_L2&hc1=$ser_hc1&ubt1=$ubt1&ubt2=$ubt2' width='320' height='320'>";
+  echo "</td><td>チャートに対するコメント</td></tr>";
+  echo "</table>";
+  echo "<table width='640'>";
+  echo "<tr><td>";
+  echo "<img border='0' src='natal_wheel.php?rx1=$rx1&rx2=$rx2&p1=$ser_L1&p2=$ser_L2&hc1=$ser_hc1&ubt1=$ubt1&ubt2=$ubt2' width='320' height='320'>";
+  echo "</td><td>チャートに対するコメント</td></tr>";
+  echo "</table>";
+	
+  echo "</center>";
+?>
+
+
+<?php
+if (!isset($_POST['submitted'])){
 ?>
 
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" target="_blank" style="margin: 0px 20px;">
@@ -1006,6 +1023,10 @@
   <br>
   </fieldset>
 </form>
+
+<?php
+   }
+?>
 
 <?php
 //include ('footer_natal.html');
