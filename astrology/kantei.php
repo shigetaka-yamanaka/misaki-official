@@ -490,7 +490,7 @@
             echo "<td>&nbsp;&nbsp;&nbsp;" . $hse . "</td>";
           }
         }
-	echo '<td>'.Convert_Longitude2($longitude1[$i]) .'</td>';
+	echo '<td>'.Convert_Longitude2($longitude1[$i])[3] .'</td>';
         echo '</tr>';
       }
 
@@ -662,7 +662,7 @@
       echo "<style>.f90{color:#f90;}.noborder{border:0;}.noborder td{border:0}</style>";
 
       echo "<center>";
-      echo "<table width='640' class='noborder'>";
+      echo "<table width='640' class='noborder' style='border-collapse: collapse;table-layout: fixed;'>";
       echo "<tr><td colspan='2'>①月</td></tr>";
       echo "<tr><td>";
       echo "<img border='0' src='kantei/title1.png' width='100'>";
@@ -673,6 +673,16 @@
  
       echo "<tr><td class='f90'>知性や技術を発達させやすい領域</td><td>".$house_pos1[1]."ハウス</td></tr>";
       echo "<tr><td colspan='2'>".getHouseText($house_pos1[1])[0]."</td></tr>";
+
+      echo "<tr><td class='f90'>総評</td><td></td></tr>";
+      echo "<tr><td colspan='2'>".getGenerals(1,$longitude1[1],$house_pos1[1])."</td></tr>";
+      
+      echo "<tr><td class='f90'>発揮するためのヒント</td><td>".Convert_Longitude2($longitude1[1])[5]."</td></tr>";
+      echo "<tr><td colspan='2'>".Convert_Longitude2($longitude1[1])[3]."<br>".Convert_Longitude2($longitude1[1])[4]."</td></tr>";
+
+
+      echo "<tr><td class='f90'>他の惑星との角度で計算する現れやすい性格や個性</td><td></td></tr>";
+      echo "<tr><td colspan='2'></td></tr>";
 
       echo "</table>";
 
@@ -1110,12 +1120,12 @@ Function Convert_Longitude2($longitude)
   $sign_num = floor($longitude / 30);
   $pos_in_sign = $longitude - ($sign_num * 30);
   $deg = floor($pos_in_sign);
-
   $sql = 'SELECT * FROM ja360 where sign_id='.(int)($sign_num+1).' and deg='.(int)($deg+1);
   $res = $mysqli->query($sql);
   $dat = mysqli_fetch_row($res);
   //return $deg+1 . " " . ($sign_num+1);
-  return $dat[3];
+  $dat[5]=(int)($deg+1);
+  return $dat;
 }
 
 Function getSignKeyword($longitude)
@@ -1140,71 +1150,23 @@ Function getHouseText($house_id)
   return $dat;
 }
 
-Function mid($midstring, $midstart, $midlength)
+Function getGenerals($pl_id, $longitude, $house_id)
 {
-  return(substr($midstring, $midstart-1, $midlength));
+  global $mysqli;
+
+  $sign_num = floor($longitude / 30) + 1;
+
+
+  $sql = 'SELECT text FROM generals where planet_id='.$pl_id.' and type="a" and ph_id='.$sign_num;
+  $res = $mysqli->query($sql);
+  $dat = mysqli_fetch_row($res);
+
+  $sql = 'SELECT text FROM generals where planet_id='.$pl_id.' and type="h" and ph_id='.$house_id;
+  $res = $mysqli->query($sql);
+  $dat2 = mysqli_fetch_row($res);
+
+  return $dat[0]."<br><br>".$dat2[0];
 }
-
-Function safeEscapeString($string)
-{
-// replace HTML tags '<>' with '[]'
-  $temp1 = str_replace("<", "[", $string);
-  $temp2 = str_replace(">", "]", $temp1);
-
-// but keep <br> or <br />
-// turn <br> into <br /> so later it will be turned into ""
-// using just <br> will add extra blank lines
-  $temp1 = str_replace("[br]", "<br />", $temp2);
-  $temp2 = str_replace("[br /]", "<br />", $temp1);
-
-  if (get_magic_quotes_gpc())
-  {
-    return $temp2;
-  }
-  else
-  {
-    //return mysql_escape_string($temp2);
-    return $temp2;
-  }
-}
-
-
-Function Find_Specific_Report_Paragraph($phrase_to_look_for, $file)
-{
-  $string = "";
-  $len = strlen($phrase_to_look_for);
-
-  //put entire file contents into an array, line by line
-  $file_array = file($file);
-
-  // look through each line searching for $phrase_to_look_for
-  for($i = 0; $i < count($file_array); $i++)
-  {
-    if (left(trim($file_array[$i]), $len) == $phrase_to_look_for)
-    {
-      $flag = 0;
-      while (trim($file_array[$i]) != "*")
-      {
-        if ($flag == 0)
-        {
-          $string .= "<b>" . $file_array[$i] . "</b>";
-        }
-        else
-        {
-          $string .= $file_array[$i];
-        }
-        $flag = 1;
-        $i++;
-      }
-      break;
-    }
-  }
-
-  return $string;
-}
-
-?>
-
 
 
 
@@ -1212,7 +1174,6 @@ Function mid($midstring, $midstart, $midlength)
 {
   return(substr($midstring, $midstart-1, $midlength));
 }
-
 
 Function safeEscapeString($string)
 {
