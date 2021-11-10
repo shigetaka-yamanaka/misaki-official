@@ -639,6 +639,44 @@
 
       echo '</table></center>',"\n";
       echo "<br /><br />";
+      
+      
+      echo "<center>";
+      echo "<img src='kantei/p1.png' width='640'><br /><br />";
+      echo "<img src='kantei/p2.png' width='640'><br /><br />";
+      echo "<img src='kantei/p3.png' width='640'><br /><br />";
+      echo "<table width='640'>";
+      echo "<tr><td>";
+      echo "<img border='0' src='natal_wheel.php?rx1=$rx1&rx2=$rx2&p1=$ser_L1&p2=$ser_L2&hc1=$ser_hc1&ubt1=$ubt1&ubt2=$ubt2' width='320' height='320'>";
+      echo "</td><td>チャートに対するコメント</td></tr>";
+      echo "</table>";
+      echo "<table width='640'>";
+      echo "<tr><td>";
+      echo "<img border='0' src='natal_wheel.php?rx1=$rx1&rx2=$rx2&p1=$ser_L1&p2=$ser_L2&hc1=$ser_hc1&ubt1=$ubt1&ubt2=$ubt2' width='320' height='320'>";
+      echo "</td><td>チャートに対するコメント</td></tr>";
+      echo "</table>";
+      echo "</center>";
+
+
+
+      echo "<style>.f90{color:#f90;}.noborder{border:0;}.noborder td{border:0}</style>";
+
+      echo "<center>";
+      echo "<table width='640' class='noborder'>";
+      echo "<tr><td colspan='2'>①月</td></tr>";
+      echo "<tr><td>";
+      echo "<img border='0' src='kantei/title1.png' width='100'>";
+      echo "</td><td>心を安定させるための情報、大切にすべき本来の素の自分に関する情報</td></tr>";
+
+      echo "<tr><td class='f90'>心の安定のキーワード</td><td>".getSignKeyword($longitude1[1])[1]."</td></tr>";
+      echo "<tr><td colspan='2'>".getSignKeyword($longitude1[1])[3]."</td></tr>";
+ 
+      echo "<tr><td class='f90'>知性や技術を発達させやすい領域</td><td>".$house_pos1[1]."ハウス</td></tr>";
+      echo "<tr><td colspan='2'>".getHouseText($house_pos1[1])[0]."</td></tr>";
+
+      echo "</table>";
+
+      echo "</center>";
 
 
     }
@@ -667,23 +705,6 @@
     $ns = $_COOKIE["ns"];
   }
 
-  echo "<center>";
-  echo "<img src='kantei/p1.png' width='640'><br /><br />";
-  echo "<img src='kantei/p2.png' width='640'><br /><br />";
-  echo "<img src='kantei/p3.png' width='640'><br /><br />";
-
-  echo "<table width='640'>";
-  echo "<tr><td>";
-  echo "<img border='0' src='natal_wheel.php?rx1=$rx1&rx2=$rx2&p1=$ser_L1&p2=$ser_L2&hc1=$ser_hc1&ubt1=$ubt1&ubt2=$ubt2' width='320' height='320'>";
-  echo "</td><td>チャートに対するコメント</td></tr>";
-  echo "</table>";
-  echo "<table width='640'>";
-  echo "<tr><td>";
-  echo "<img border='0' src='natal_wheel.php?rx1=$rx1&rx2=$rx2&p1=$ser_L1&p2=$ser_L2&hc1=$ser_hc1&ubt1=$ubt1&ubt2=$ubt2' width='320' height='320'>";
-  echo "</td><td>チャートに対するコメント</td></tr>";
-  echo "</table>";
-	
-  echo "</center>";
 ?>
 
 
@@ -1096,6 +1117,93 @@ Function Convert_Longitude2($longitude)
   //return $deg+1 . " " . ($sign_num+1);
   return $dat[3];
 }
+
+Function getSignKeyword($longitude)
+{
+  global $mysqli;
+  $sign_num = floor($longitude / 30);
+
+  $sql = 'SELECT * FROM signs where sign_id='.(int)($sign_num+1);
+  $res = $mysqli->query($sql);
+  $dat = mysqli_fetch_row($res);
+  return $dat;
+   
+}
+
+Function getHouseText($house_id)
+{
+  global $mysqli;
+
+  $sql = 'SELECT text FROM houses where house_id='.$house_id;
+  $res = $mysqli->query($sql);
+  $dat = mysqli_fetch_row($res);
+  return $dat;
+}
+
+Function mid($midstring, $midstart, $midlength)
+{
+  return(substr($midstring, $midstart-1, $midlength));
+}
+
+Function safeEscapeString($string)
+{
+// replace HTML tags '<>' with '[]'
+  $temp1 = str_replace("<", "[", $string);
+  $temp2 = str_replace(">", "]", $temp1);
+
+// but keep <br> or <br />
+// turn <br> into <br /> so later it will be turned into ""
+// using just <br> will add extra blank lines
+  $temp1 = str_replace("[br]", "<br />", $temp2);
+  $temp2 = str_replace("[br /]", "<br />", $temp1);
+
+  if (get_magic_quotes_gpc())
+  {
+    return $temp2;
+  }
+  else
+  {
+    //return mysql_escape_string($temp2);
+    return $temp2;
+  }
+}
+
+
+Function Find_Specific_Report_Paragraph($phrase_to_look_for, $file)
+{
+  $string = "";
+  $len = strlen($phrase_to_look_for);
+
+  //put entire file contents into an array, line by line
+  $file_array = file($file);
+
+  // look through each line searching for $phrase_to_look_for
+  for($i = 0; $i < count($file_array); $i++)
+  {
+    if (left(trim($file_array[$i]), $len) == $phrase_to_look_for)
+    {
+      $flag = 0;
+      while (trim($file_array[$i]) != "*")
+      {
+        if ($flag == 0)
+        {
+          $string .= "<b>" . $file_array[$i] . "</b>";
+        }
+        else
+        {
+          $string .= $file_array[$i];
+        }
+        $flag = 1;
+        $i++;
+      }
+      break;
+    }
+  }
+
+  return $string;
+}
+
+?>
 
 
 
