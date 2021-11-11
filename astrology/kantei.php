@@ -1189,7 +1189,7 @@ Function getPlName($i)
   $sql = 'SELECT ja FROM planets where planet_id='.$i;
   $res = $mysqli->query($sql);
   $dat = mysqli_fetch_row($res);
-  return $dat;
+  return $dat[0];
 }
 
 Function getAspText($i, $j, $deg)
@@ -1199,7 +1199,7 @@ Function getAspText($i, $j, $deg)
   $sql = 'SELECT text FROM aspects where pl1='.$i.' and pl2='.$j .' and deg='.$deg;
   $res = $mysqli->query($sql);
   $dat = mysqli_fetch_row($res);
-  return $dat;
+  return $dat[0];
 }
 
 
