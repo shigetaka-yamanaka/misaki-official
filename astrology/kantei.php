@@ -690,7 +690,7 @@
       echo "<tr><td class='f90'>他の惑星との角度で計算する現れやすい性格や個性</td><td></td></tr>";
       echo "<tr><td colspan='2'></td></tr>";
 
-      var_dump($aspp[$i]);
+      var_dump($aspp[1]);
 
       echo "</table>";
 
