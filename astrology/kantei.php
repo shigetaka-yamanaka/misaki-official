@@ -667,36 +667,39 @@
 
       echo "<style>.f90{color:#f90;font-weight:700}.noborder{border:0;}.noborder td{border:0}</style>";
 
-      echo "<center>";
-      echo "<table width='640' class='noborder' style='border-collapse: collapse;table-layout: fixed;'>";
-      echo "<tr><td colspan='2'>①月</td></tr>";
-      echo "<tr><td>";
-      echo "<img border='0' src='kantei/title1.png' width='100'>";
-      echo "</td><td>心を安定させるための情報、大切にすべき本来の素の自分に関する情報</td></tr>";
 
-      echo "<tr><td class='f90'>心の安定のキーワード</td><td>".getSignKeyword($longitude1[1])[1]."</td></tr>";
-      echo "<tr><td colspan='2'>".getSignKeyword($longitude1[1])[3]."</td></tr>";
- 
-      echo "<tr><td class='f90'>知性や技術を発達させやすい領域</td><td>".$house_pos1[1]."ハウス</td></tr>";
-      echo "<tr><td colspan='2'>".getHouseText($house_pos1[1])[0]."</td></tr>";
 
-      echo "<tr><td class='f90'>総評</td><td></td></tr>";
-      echo "<tr><td colspan='2'>".getGenerals(1,$longitude1[1],$house_pos1[1])."</td></tr>";
-      
-      echo "<tr><td class='f90'>発揮するためのヒント</td><td>".Convert_Longitude2($longitude1[1])[5]."</td></tr>";
-      echo "<tr><td colspan='2'>".Convert_Longitude2($longitude1[1])[3]."<br>".addbr(Convert_Longitude2($longitude1[1])[4])."</td></tr>";
+      for($i=0; $i<=10; $i++){
+        echo "<center>";
+        echo "<table width='640' class='noborder' style='border-collapse: collapse;table-layout: fixed;'>";
+        echo "<tr><td colspan='2'>".$i." ".$pl_name[$i]."</td></tr>";
+        echo "<tr><td>";
+        echo "<img border='0' src='kantei/title".$i.".png' width='100'>";
+        echo "</td><td>心を安定させるための情報、大切にすべき本来の素の自分に関する情報</td></tr>";
 
-      if(!empty($aspp[1]["p"])){
-        echo "<tr><td class='f90'>他の惑星との角度で計算する現れやすい性格や個性</td><td></td></tr>";
-        foreach($aspp[1]["p"] as $k => $v){
-          $q = $aspp[1]["q"][$k];
-          echo "<tr><td><u>".getPlName($v)."</u></td><td>".$asp_deg[$q]."</td></tr>";
-          echo "<tr><td colspan='2'>".addbr(getAspText(1, $v, $asp_deg[$q]))."</td></tr>";
+        echo "<tr><td class='f90'>心の安定のキーワード</td><td>".getSignKeyword($longitude1[$i])[1]."</td></tr>";
+        echo "<tr><td colspan='2'>".getSignKeyword($longitude1[$i])[3]."</td></tr>";
+  
+        echo "<tr><td class='f90'>知性や技術を発達させやすい領域</td><td>".$house_pos1[$i]."ハウス</td></tr>";
+        echo "<tr><td colspan='2'>".getHouseText($house_pos1[$i])[0]."</td></tr>";
+
+        echo "<tr><td class='f90'>総評</td><td></td></tr>";
+        echo "<tr><td colspan='2'>".getGenerals(1,$longitude1[$i],$house_pos1[$i])."</td></tr>";
+        
+        echo "<tr><td class='f90'>発揮するためのヒント</td><td>".Convert_Longitude2($longitude1[$i])[5]."</td></tr>";
+        echo "<tr><td colspan='2'>".Convert_Longitude2($longitude1[$i])[3]."<br>".addbr(Convert_Longitude2($longitude1[$i])[4])."</td></tr>";
+
+        if(!empty($aspp[$i]["p"])){
+          echo "<tr><td class='f90'>他の惑星との角度で計算する現れやすい性格や個性</td><td></td></tr>";
+          foreach($aspp[$i]["p"] as $k => $v){
+            $q = $aspp[$i]["q"][$k];
+            echo "<tr><td><u>".getPlName($v)."</u></td><td>".$asp_deg[$q]."</td></tr>";
+            echo "<tr><td colspan='2'>".addbr(getAspText($i, $v, $asp_deg[$q]))."</td></tr>";
+          }
         }
+        echo "</table>";
+        echo "</center>";
       }
-
-      echo "</table>";
-      echo "</center>";
 
 
     }
