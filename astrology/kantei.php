@@ -635,6 +635,10 @@
             echo "<td>" . $pl_name[$j] . "</td>";
             echo "<td>" . sprintf("%.2f", abs($dax)) . "</td>";
             echo '</tr>';
+
+            $aspp[$i]["p"][] = $j;
+            $aspp[$i]["q"][] = $q;
+
           }
         }
       }
@@ -685,6 +689,8 @@
 
       echo "<tr><td class='f90'>他の惑星との角度で計算する現れやすい性格や個性</td><td></td></tr>";
       echo "<tr><td colspan='2'></td></tr>";
+
+      var_dump($aspp[$i]);
 
       echo "</table>";
 
