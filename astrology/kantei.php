@@ -635,7 +635,7 @@
             echo "<td>" . $pl_name[$j] . "</td>";
             echo "<td>" . sprintf("%.2f", abs($dax)) . "</td>";
             echo '</tr>';
-            if($i < 10 && $q!=5){
+            if($i < 10 && $q!=5 && $j < 10){
               $aspp[$i]["p"][] = $j;
               $aspp[$i]["q"][] = $q;
             }
