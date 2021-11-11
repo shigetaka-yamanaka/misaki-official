@@ -635,7 +635,7 @@
             echo "<td>" . $pl_name[$j] . "</td>";
             echo "<td>" . sprintf("%.2f", abs($dax)) . "</td>";
             echo '</tr>';
-
+            echo "#".$i;
             $aspp[$i]["p"][] = $j;
             $aspp[$i]["q"][] = $q;
 
