@@ -675,7 +675,7 @@
         echo "<tr><td colspan='2'>".$i." ".$pl_name[$i]."</td></tr>";
         echo "<tr><td>";
         echo "<img border='0' src='kantei/title".$i.".png' width='100'>";
-        echo "</td><td>心を安定させるための情報、大切にすべき本来の素の自分に関する情報</td></tr>";
+        echo "</td><td>".getPlanet($v)[3]."</td></tr>";
 
         echo "<tr><td class='f90'>心の安定のキーワード</td><td>".getSignKeyword($longitude1[$i])[1]."</td></tr>";
         echo "<tr><td colspan='2'>".getSignKeyword($longitude1[$i])[3]."</td></tr>";
@@ -684,7 +684,7 @@
         echo "<tr><td colspan='2'>".getHouseText($house_pos1[$i])[0]."</td></tr>";
 
         echo "<tr><td class='f90'>総評</td><td></td></tr>";
-        echo "<tr><td colspan='2'>".getGenerals(1,$longitude1[$i],$house_pos1[$i])."</td></tr>";
+        echo "<tr><td colspan='2'>".getGenerals($i, $longitude1[$i], $house_pos1[$i])."</td></tr>";
         
         echo "<tr><td class='f90'>発揮するためのヒント</td><td>".Convert_Longitude2($longitude1[$i])[5]."</td></tr>";
         echo "<tr><td colspan='2'>".Convert_Longitude2($longitude1[$i])[3]."<br>".addbr(Convert_Longitude2($longitude1[$i])[4])."</td></tr>";
@@ -693,7 +693,7 @@
           echo "<tr><td class='f90'>他の惑星との角度で計算する現れやすい性格や個性</td><td></td></tr>";
           foreach($aspp[$i]["p"] as $k => $v){
             $q = $aspp[$i]["q"][$k];
-            echo "<tr><td><u>".getPlName($v)."</u></td><td>".$asp_deg[$q]."</td></tr>";
+            echo "<tr><td><u>".getPlanet($v)[1]."</u></td><td>".$asp_deg[$q]."</td></tr>";
             echo "<tr><td colspan='2'>".addbr(getAspText($i, $v, $asp_deg[$q]))."</td></tr>";
           }
         }
@@ -1187,14 +1187,14 @@ Function getGenerals($pl_id, $longitude, $house_id)
 }
 
 
-Function getPlName($i)
+Function getPlanet($i)
 {
   global $mysqli;
 
-  $sql = 'SELECT ja FROM planets where planet_id='.$i;
+  $sql = 'SELECT * FROM planets where planet_id='.$i;
   $res = $mysqli->query($sql);
   $dat = mysqli_fetch_row($res);
-  return $dat[0];
+  return $dat;
 }
 
 Function getAspText($i, $j, $deg)
