@@ -136,6 +136,13 @@ $asp_name[4] = "Square";
 $asp_name[5] = "Quincunx";
 $asp_name[6] = "Sextile";
 
+$asp_deg[1] = "0";
+$asp_deg[2] = "180";
+$asp_deg[3] = "120";
+$asp_deg[4] = "90";
+$asp_deg[5] = "150";
+$asp_deg[6] = "60";
+
 $asp_glyph[1] = 113;		//  0 deg
 $asp_glyph[2] = 119;		//180 deg
 $asp_glyph[3] = 101;		//120 deg

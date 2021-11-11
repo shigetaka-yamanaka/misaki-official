@@ -636,9 +636,10 @@
             echo "<td>" . sprintf("%.2f", abs($dax)) . "</td>";
             echo '</tr>';
             echo "#".$i;
-            $aspp[$i]["p"][] = $j;
-            $aspp[$i]["q"][] = $q;
-
+            if($i < 10 && $q!=5){
+              $aspp[$i]["p"][] = $j;
+              $aspp[$i]["q"][] = $q;
+            }
           }
         }
       }
@@ -686,11 +687,15 @@
       echo "<tr><td class='f90'>発揮するためのヒント</td><td>".Convert_Longitude2($longitude1[1])[5]."</td></tr>";
       echo "<tr><td colspan='2'>".Convert_Longitude2($longitude1[1])[3]."<br>".Convert_Longitude2($longitude1[1])[4]."</td></tr>";
 
+      if(!empty($aspp[1]["p"]))
+        echo "<tr><td class='f90'>他の惑星との角度で計算する現れやすい性格や個性</td><td></td></tr>";
 
-      echo "<tr><td class='f90'>他の惑星との角度で計算する現れやすい性格や個性</td><td></td></tr>";
-      echo "<tr><td colspan='2'></td></tr>";
-
-      var_dump($aspp[1]);
+        foreach($aspp[1]["p"] as $k => $v){
+          $q = $aspp[1]["q"][$k];
+          echo "<tr><td><u>".getPlName($v)."</u></td><td>".$asp_deg[$q]."</td></tr>";
+          echo "<tr><td colspan='2'>".getAspText(1, $v, $asp_deg[$q])."</td></tr>";
+        }
+      }
 
       echo "</table>";
 
@@ -1176,6 +1181,36 @@ Function getGenerals($pl_id, $longitude, $house_id)
   return $dat[0]."<br><br>".$dat2[0];
 }
 
+
+Function getPlName($i)
+{
+  global $mysqli;
+
+  $sql = 'SELECT ja FROM planets where planet_id='.$i;
+  $res = $mysqli->query($sql);
+  $dat = mysqli_fetch_row($res);
+  return $dat;
+}
+
+Function getPlName($i)
+{
+  global $mysqli;
+
+  $sql = 'SELECT ja FROM planets where planet_id='.$i;
+  $res = $mysqli->query($sql);
+  $dat = mysqli_fetch_row($res);
+  return $dat;
+}
+
+Function getAspText($i, $j, $deg)
+{
+  global $mysqli;
+
+  $sql = 'SELECT text FROM aspects where pl1='.$i.' and pl2='.$j .' and deg='.$deg;
+  $res = $mysqli->query($sql);
+  $dat = mysqli_fetch_row($res);
+  return $dat;
+}
 
 
 Function mid($midstring, $midstart, $midlength)
