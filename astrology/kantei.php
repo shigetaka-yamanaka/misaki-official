@@ -684,14 +684,14 @@
       echo "<tr><td colspan='2'>".getGenerals(1,$longitude1[1],$house_pos1[1])."</td></tr>";
       
       echo "<tr><td class='f90'>発揮するためのヒント</td><td>".Convert_Longitude2($longitude1[1])[5]."</td></tr>";
-      echo "<tr><td colspan='2'>".Convert_Longitude2($longitude1[1])[3]."<br>".Convert_Longitude2($longitude1[1])[4]."</td></tr>";
+      echo "<tr><td colspan='2'>".Convert_Longitude2($longitude1[1])[3]."<br>".addbr(Convert_Longitude2($longitude1[1])[4])."</td></tr>";
 
       if(!empty($aspp[1]["p"])){
         echo "<tr><td class='f90'>他の惑星との角度で計算する現れやすい性格や個性</td><td></td></tr>";
         foreach($aspp[1]["p"] as $k => $v){
           $q = $aspp[1]["q"][$k];
           echo "<tr><td><u>".getPlName($v)."</u></td><td>".$asp_deg[$q]."</td></tr>";
-          echo "<tr><td colspan='2'>".getAspText(1, $v, $asp_deg[$q])."</td></tr>";
+          echo "<tr><td colspan='2'>".addbr(getAspText(1, $v, $asp_deg[$q]))."</td></tr>";
         }
       }
 
@@ -1072,6 +1072,11 @@ if (!isset($_POST['submitted'])){
 
 <?php
 //include ('footer_natal.html');
+
+
+Function addbr($t){
+  return str_replace("・","<br>・",$t);
+}
 
 
 Function left($leftstring, $leftlength)
