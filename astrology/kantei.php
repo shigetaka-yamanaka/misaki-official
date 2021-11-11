@@ -635,7 +635,6 @@
             echo "<td>" . $pl_name[$j] . "</td>";
             echo "<td>" . sprintf("%.2f", abs($dax)) . "</td>";
             echo '</tr>';
-            echo "#".$i;
             if($i < 10 && $q!=5){
               $aspp[$i]["p"][] = $j;
               $aspp[$i]["q"][] = $q;
@@ -689,6 +688,8 @@
 
       if(!empty($aspp[1]["p"])){
         echo "<tr><td class='f90'>他の惑星との角度で計算する現れやすい性格や個性</td><td></td></tr>";
+
+        var_dump($aspp);
 
         foreach($aspp[1]["p"] as $k => $v){
           $q = $aspp[1]["q"][$k];
