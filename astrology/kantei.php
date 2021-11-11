@@ -1192,16 +1192,6 @@ Function getPlName($i)
   return $dat;
 }
 
-Function getPlName($i)
-{
-  global $mysqli;
-
-  $sql = 'SELECT ja FROM planets where planet_id='.$i;
-  $res = $mysqli->query($sql);
-  $dat = mysqli_fetch_row($res);
-  return $dat;
-}
-
 Function getAspText($i, $j, $deg)
 {
   global $mysqli;
