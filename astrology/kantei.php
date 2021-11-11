@@ -688,9 +688,9 @@
 
       if(!empty($aspp[1]["p"])){
         echo "<tr><td class='f90'>他の惑星との角度で計算する現れやすい性格や個性</td><td></td></tr>";
-
+        echo "<pre>";
         var_dump($aspp);
-
+        echo "</pre>";
         foreach($aspp[1]["p"] as $k => $v){
           $q = $aspp[1]["q"][$k];
           echo "<tr><td><u>".getPlName($v)."</u></td><td>".$asp_deg[$q]."</td></tr>";
