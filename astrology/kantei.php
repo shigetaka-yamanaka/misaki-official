@@ -665,7 +665,7 @@
 
 
 
-      echo "<style>.f90{color:#f90;}.noborder{border:0;}.noborder td{border:0}</style>";
+      echo "<style>.f90{color:#f90;font-weight:700}.noborder{border:0;}.noborder td{border:0}</style>";
 
       echo "<center>";
       echo "<table width='640' class='noborder' style='border-collapse: collapse;table-layout: fixed;'>";
@@ -696,7 +696,6 @@
       }
 
       echo "</table>";
-
       echo "</center>";
 
 
