@@ -585,11 +585,13 @@
           }
           elseif ($i == 0 Or $i == 1 Or $j == 0 Or $j == 1)
           {
-            $orb = 8;
+            //$orb = 8;
+            $orb = 5;
           }
           else
           {
-            $orb = 6;
+            //$orb = 6;
+            $orb = 5;
           }
 
           // is there an aspect within orb?
