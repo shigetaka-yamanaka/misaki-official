@@ -677,7 +677,7 @@
         echo "<img border='0' src='kantei/title".$i.".png' width='100'>";
         echo "</td><td>".getPlanet($i)[3]."</td></tr>";
 
-        echo "<tr><td class='f90'>心の安定のキーワード</td><td>".getSignKeyword($longitude1[$i])[1]."</td></tr>";
+        echo "<tr><td class='f90'>心の安定のキーワード</td><td>".getSignKeyword($longitude1[$i])[$i]."</td></tr>";
         echo "<tr><td colspan='2'>".getSignKeyword($longitude1[$i])[3]."</td></tr>";
   
         echo "<tr><td class='f90'>知性や技術を発達させやすい領域</td><td>".$house_pos1[$i]."ハウス</td></tr>";
