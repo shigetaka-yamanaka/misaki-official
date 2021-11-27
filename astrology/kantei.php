@@ -670,9 +670,10 @@
 
       $ary = [1,2,3,0,4,5,6,7,8,9,10];
       foreach($ary as $i){
+        $mn = 9311+$i;
         echo "<center>";
         echo "<table width='640' class='noborder' style='border-collapse: collapse;table-layout: fixed;'>";
-        echo "<tr><td colspan='2'>&#".(int)(9311)+(int)($i)."; <u>".$pl_name[$i]."</u></td></tr>";
+        echo "<tr><td colspan='2'>&#".$mn."; <u>".$pl_name[$i]."</u></td></tr>";
         echo "<tr><td>";
         echo "<img border='0' src='kantei/title".$i.".png' width='100'>";
         echo "</td><td>".getPlanet($i)[3]."</td></tr>";
