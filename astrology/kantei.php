@@ -672,7 +672,7 @@
       foreach($ary as $i){
         echo "<center>";
         echo "<table width='640' class='noborder' style='border-collapse: collapse;table-layout: fixed;'>";
-        echo "<tr><td colspan='2'>".$i." ".$pl_name[$i]."</td></tr>";
+        echo "<tr><td colspan='2'>&#".(9311)+$i."; <u>".$pl_name[$i]."</u></td></tr>";
         echo "<tr><td>";
         echo "<img border='0' src='kantei/title".$i.".png' width='100'>";
         echo "</td><td>".getPlanet($i)[3]."</td></tr>";
