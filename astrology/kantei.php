@@ -668,8 +668,8 @@
       echo "<style>.f90{color:#f90;font-weight:700}.noborder{border:0;}.noborder td{border:0}</style>";
 
 
-
-      for($i=0; $i<=10; $i++){
+      $ary = [1,2,3,0,4,5,6,7,8,9,10];
+      foreach($ary as $i){
         echo "<center>";
         echo "<table width='640' class='noborder' style='border-collapse: collapse;table-layout: fixed;'>";
         echo "<tr><td colspan='2'>".$i." ".$pl_name[$i]."</td></tr>";
@@ -677,7 +677,7 @@
         echo "<img border='0' src='kantei/title".$i.".png' width='100'>";
         echo "</td><td>".getPlanet($i)[3]."</td></tr>";
 
-        echo "<tr><td class='f90'>".getPlanet($i)[5]."</td><td>".getSignKeyword($longitude1[$i])[1]."</td></tr>";
+        echo "<tr><td class='f90'>".getPlanet($i)[5]."</td><td>".getSignKeyword($longitude1[$i])[1d]."</td></tr>";
         echo "<tr><td colspan='2'>".getSignKeyword($longitude1[$i])[3]."</td></tr>";
   
         echo "<tr><td class='f90'>".getPlanet($i)[6]."</td><td>".$house_pos1[$i]."ハウス</td></tr>";
