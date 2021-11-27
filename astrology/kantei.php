@@ -677,10 +677,10 @@
         echo "<img border='0' src='kantei/title".$i.".png' width='100'>";
         echo "</td><td>".getPlanet($i)[3]."</td></tr>";
 
-        echo "<tr><td class='f90'>".getPlanet($v)[5]."</td><td>".getSignKeyword($longitude1[$i])[$i]."</td></tr>";
+        echo "<tr><td class='f90'>".getPlanet($i)[5]."</td><td>".getSignKeyword($longitude1[$i])[$i]."</td></tr>";
         echo "<tr><td colspan='2'>".getSignKeyword($longitude1[$i])[3]."</td></tr>";
   
-        echo "<tr><td class='f90'>".getPlanet($v)[6]."</td><td>".$house_pos1[$i]."ハウス</td></tr>";
+        echo "<tr><td class='f90'>".getPlanet($i)[6]."</td><td>".$house_pos1[$i]."ハウス</td></tr>";
         echo "<tr><td colspan='2'>".getHouseText($house_pos1[$i])[0]."</td></tr>";
 
         echo "<tr><td class='f90'>総評</td><td></td></tr>";
